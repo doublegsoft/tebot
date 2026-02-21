@@ -1,0 +1,32 @@
+NSWindow 是苹果开发者文档中的一个类，用于创建和管理 macOS 应用程序中的窗口。NSWindow 类提供了许多方法和属性，可以用来设置窗口的外观、大小、位置以及与窗口相关的行为。
+
+要创建一个 NSWindow 对象，可以使用以下代码：
+
+```objective-c
+NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 800, 600)
+                                              styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskResizable
+                                                backing:NSBackingStoreBuffered
+                                                  defer:NO];
+```
+
+上述代码创建了一个大小为 800x600 像素的窗口，并设置了标题、关闭按钮和可调整大小的样式。
+
+要设置窗口的内容视图，可以使用以下代码：
+
+```objective-c
+NSView *contentView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)];
+[window setContentView:contentView];
+```
+
+上述代码将一个 NSView 对象设置为窗口的内容视图，这样窗口就会显示该视图的内容。
+
+如果你想要调整窗口的大小以适应内容视图的大小，可以使用以下代码：
+
+```objective-c
+NSRect contentFrame = [window frameRectForContentRect:contentView.frame];
+[window setFrame:contentFrame display:YES];
+```
+
+上述代码会根据内容视图的大小计算出窗口的新框架，并将窗口的大小调整为适应内容视图的大小。
+
+希望这些代码能帮助你创建和管理 NSWindow 对象。如果你有任何进一步的问题，请随时提问。

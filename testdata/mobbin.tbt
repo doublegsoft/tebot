@@ -1,0 +1,4 @@
+goto("https://mobbin.com/browse/ios/apps")
+capture("")
+
+sleep("5")

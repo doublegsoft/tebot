@@ -1,0 +1,19 @@
+goto("https://www.devv.ai")
+capture("")
+
+input("//input[@aria-label='搜索']" = "hello")
+click("//button[@aria-label='Search']")
+
+sleep("10")
+
+input("//input[@aria-label='输入搜索内容']" = "NSWindow")
+click("//button[@aria-label='Search']")
+
+sleep("15")
+
+click("/html/body/div/div/div/main/div/div[2]/div[1]/div[1]/div[1]/div[2]/button[1]")
+
+sleep("3")
+
+save("")
+paste("")
