@@ -44,7 +44,7 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
   // Connect to the WebDriver instance running locally.
   caps := selenium.Capabilities {
     "browserName":          "firefox",
-    "takeScreenshot":       true,
+    "takeScreenshot":       false,
     "useTechnologyPreview": true}
   webdriver, err := selenium.NewRemote(caps, fmt.Sprintf("http://localhost:%d/wd/hub", port))
   if err != nil {
