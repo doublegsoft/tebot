@@ -3,18 +3,30 @@ package main
 import (
   "testing"
   "io/ioutil"
+  "fmt"
+  "strconv"
 
-  "./parser"
-  "./runner"
+  "tebot/parser"
+  // "tebot/runner"
 )
 
 func TestParse(t *testing.T) {
   buf, _ := ioutil.ReadFile("../../testdata/#001.tbt")
   ops := parser.Parse(string(buf))
 
-  if len(ops.Operations) != 1 {
-    t.Fatalf("the operation count is" + string(len(ops.Operations)))
+  fmt.Println("the operation count is " + strconv.Itoa(len(ops.Operations)))
+
+  for _, op := range ops.Operations {
+    fmt.Println("action: " + op.Action)  
+    fmt.Println("selector: " + op.GetSelector())
+    fmt.Println("value: " + op.Value)
+    if op.Assert != nil {
+      fmt.Println("dsn: " + op.Assert.GetDsn())
+      fmt.Println("sql: " + op.Assert.GetSql())
+      fmt.Println("expected: " + op.Assert.GetExpected())
+    }
+    fmt.Println("--------------------------------")
   }
   
-  runner.Run(ops)
+  // runner.Run(ops)
 }

@@ -4,11 +4,30 @@ import (
   "strings"
 )
 
+type TebotAssert struct {
+  Dsn      string
+  Sql      string
+  Expected string
+}
+
+func (a *TebotAssert) GetDsn() string {
+  return a.Dsn
+}
+
+func (a *TebotAssert) GetSql() string {
+  return a.Sql
+}
+
+func (a *TebotAssert) GetExpected() string {
+  return a.Expected
+}
+
 type TebotOperation struct {
   Action   string
   Value    string
   Selector string
   Script   string
+  Assert   *TebotAssert
 }
 
 func (op *TebotOperation) GetValue() string {
@@ -18,7 +37,6 @@ func (op *TebotOperation) GetValue() string {
   }
   if strings.Index(text, "\"") == 0 {
     runes := []rune(text)
-    // ... Convert back into a string from rune slice.
     return string(runes[1:len(runes)-1])
   }
   return text
@@ -32,7 +50,6 @@ func (op *TebotOperation) GetSelector() string {
 
   if strings.Index(text, "\"") == 0 {
     runes := []rune(text)
-    // ... Convert back into a string from rune slice.
     return string(runes[1:len(runes)-1])
   }
   return text

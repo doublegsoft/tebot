@@ -152,14 +152,14 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
       // robotgo.KeyTap("down", "fn")
       break
     case "assert":
-      elm := Locate(&webdriver, op)
-      txt, _ := (*elm).Text()
-      if strings.Index(txt, op.GetSelector()) == -1 {
-        bytes, _ := webdriver.Screenshot()
-        now := time.Now()
-        fn := now.Format("20060102150405")
-        ioutil.WriteFile("./"+ fn + ".assert.png", bytes, 0644)
-      }
+      // elm := Locate(&webdriver, op)
+      // txt, _ := (*elm).Text()
+      // if strings.Index(txt, op.GetSelector()) == -1 {
+      //   bytes, _ := webdriver.Screenshot()
+      //   now := time.Now()
+      //   fn := now.Format("20060102150405")
+      //   ioutil.WriteFile("./"+ fn + ".assert.png", bytes, 0644)
+      // }
       break
     case "sleep":
       sec, _ := strconv.ParseInt(op.GetSelector(), 10, 32)

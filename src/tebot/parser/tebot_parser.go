@@ -35,32 +35,38 @@ func tebotParserInit() {
 	staticData.LiteralNames = []string{
 		"", "'click'", "'input'", "'select'", "'capture'", "'assert'", "'sleep'",
 		"'goto'", "'move'", "'scroll'", "'save'", "'paste'", "'='", "'('", "')'",
+		"','",
 	}
 	staticData.SymbolicNames = []string{
-		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "TEBOT_WHITESPACE",
+		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "TEBOT_WHITESPACE",
 		"TEBOT_COMMENT", "TEBOT_QUOTED_STRING",
 	}
 	staticData.RuleNames = []string{
 		"tebot_selector", "tebot_value", "tebot_action", "tebot_assign", "tebot_operation",
-		"tebot_operations",
+		"tebot_assert", "tebot_operations",
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 17, 40, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
-		4, 2, 5, 7, 5, 1, 0, 1, 0, 1, 1, 1, 1, 1, 2, 1, 2, 1, 3, 1, 3, 1, 3, 3,
-		3, 22, 8, 3, 1, 3, 1, 3, 1, 4, 1, 4, 1, 4, 1, 4, 3, 4, 30, 8, 4, 1, 4,
-		1, 4, 1, 5, 5, 5, 35, 8, 5, 10, 5, 12, 5, 38, 9, 5, 1, 5, 0, 0, 6, 0, 2,
-		4, 6, 8, 10, 0, 1, 1, 0, 1, 11, 36, 0, 12, 1, 0, 0, 0, 2, 14, 1, 0, 0,
-		0, 4, 16, 1, 0, 0, 0, 6, 21, 1, 0, 0, 0, 8, 25, 1, 0, 0, 0, 10, 36, 1,
-		0, 0, 0, 12, 13, 5, 17, 0, 0, 13, 1, 1, 0, 0, 0, 14, 15, 5, 17, 0, 0, 15,
-		3, 1, 0, 0, 0, 16, 17, 7, 0, 0, 0, 17, 5, 1, 0, 0, 0, 18, 19, 3, 0, 0,
-		0, 19, 20, 5, 12, 0, 0, 20, 22, 1, 0, 0, 0, 21, 18, 1, 0, 0, 0, 21, 22,
-		1, 0, 0, 0, 22, 23, 1, 0, 0, 0, 23, 24, 3, 2, 1, 0, 24, 7, 1, 0, 0, 0,
-		25, 26, 3, 4, 2, 0, 26, 29, 5, 13, 0, 0, 27, 30, 3, 0, 0, 0, 28, 30, 3,
-		6, 3, 0, 29, 27, 1, 0, 0, 0, 29, 28, 1, 0, 0, 0, 30, 31, 1, 0, 0, 0, 31,
-		32, 5, 14, 0, 0, 32, 9, 1, 0, 0, 0, 33, 35, 3, 8, 4, 0, 34, 33, 1, 0, 0,
-		0, 35, 38, 1, 0, 0, 0, 36, 34, 1, 0, 0, 0, 36, 37, 1, 0, 0, 0, 37, 11,
-		1, 0, 0, 0, 38, 36, 1, 0, 0, 0, 3, 21, 29, 36,
+		4, 1, 18, 54, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 2, 5, 7, 5, 2, 6, 7, 6, 1, 0, 1, 0, 1, 1, 1, 1, 1, 2, 1, 2, 1, 3, 1,
+		3, 1, 3, 3, 3, 24, 8, 3, 1, 3, 1, 3, 1, 4, 1, 4, 1, 4, 1, 4, 3, 4, 32,
+		8, 4, 1, 4, 1, 4, 1, 4, 3, 4, 37, 8, 4, 1, 5, 1, 5, 1, 5, 1, 5, 1, 5, 1,
+		5, 1, 5, 1, 5, 1, 5, 1, 6, 5, 6, 49, 8, 6, 10, 6, 12, 6, 52, 9, 6, 1, 6,
+		0, 0, 7, 0, 2, 4, 6, 8, 10, 12, 0, 1, 1, 0, 1, 11, 50, 0, 14, 1, 0, 0,
+		0, 2, 16, 1, 0, 0, 0, 4, 18, 1, 0, 0, 0, 6, 23, 1, 0, 0, 0, 8, 36, 1, 0,
+		0, 0, 10, 38, 1, 0, 0, 0, 12, 50, 1, 0, 0, 0, 14, 15, 5, 18, 0, 0, 15,
+		1, 1, 0, 0, 0, 16, 17, 5, 18, 0, 0, 17, 3, 1, 0, 0, 0, 18, 19, 7, 0, 0,
+		0, 19, 5, 1, 0, 0, 0, 20, 21, 3, 0, 0, 0, 21, 22, 5, 12, 0, 0, 22, 24,
+		1, 0, 0, 0, 23, 20, 1, 0, 0, 0, 23, 24, 1, 0, 0, 0, 24, 25, 1, 0, 0, 0,
+		25, 26, 3, 2, 1, 0, 26, 7, 1, 0, 0, 0, 27, 28, 3, 4, 2, 0, 28, 31, 5, 13,
+		0, 0, 29, 32, 3, 0, 0, 0, 30, 32, 3, 6, 3, 0, 31, 29, 1, 0, 0, 0, 31, 30,
+		1, 0, 0, 0, 32, 33, 1, 0, 0, 0, 33, 34, 5, 14, 0, 0, 34, 37, 1, 0, 0, 0,
+		35, 37, 3, 10, 5, 0, 36, 27, 1, 0, 0, 0, 36, 35, 1, 0, 0, 0, 37, 9, 1,
+		0, 0, 0, 38, 39, 5, 5, 0, 0, 39, 40, 5, 13, 0, 0, 40, 41, 3, 2, 1, 0, 41,
+		42, 5, 15, 0, 0, 42, 43, 3, 2, 1, 0, 43, 44, 5, 15, 0, 0, 44, 45, 3, 2,
+		1, 0, 45, 46, 5, 14, 0, 0, 46, 11, 1, 0, 0, 0, 47, 49, 3, 8, 4, 0, 48,
+		47, 1, 0, 0, 0, 49, 52, 1, 0, 0, 0, 50, 48, 1, 0, 0, 0, 50, 51, 1, 0, 0,
+		0, 51, 13, 1, 0, 0, 0, 52, 50, 1, 0, 0, 0, 4, 23, 31, 36, 50,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -113,9 +119,10 @@ const (
 	TebotParserT__11               = 12
 	TebotParserT__12               = 13
 	TebotParserT__13               = 14
-	TebotParserTEBOT_WHITESPACE    = 15
-	TebotParserTEBOT_COMMENT       = 16
-	TebotParserTEBOT_QUOTED_STRING = 17
+	TebotParserT__14               = 15
+	TebotParserTEBOT_WHITESPACE    = 16
+	TebotParserTEBOT_COMMENT       = 17
+	TebotParserTEBOT_QUOTED_STRING = 18
 )
 
 // TebotParser rules.
@@ -125,7 +132,8 @@ const (
 	TebotParserRULE_tebot_action     = 2
 	TebotParserRULE_tebot_assign     = 3
 	TebotParserRULE_tebot_operation  = 4
-	TebotParserRULE_tebot_operations = 5
+	TebotParserRULE_tebot_assert     = 5
+	TebotParserRULE_tebot_operations = 6
 )
 
 // ITebot_selectorContext is an interface to support dynamic dispatch.
@@ -203,7 +211,7 @@ func (p *TebotParser) Tebot_selector() (localctx ITebot_selectorContext) {
 	p.EnterRule(localctx, 0, TebotParserRULE_tebot_selector)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(12)
+		p.SetState(14)
 		p.Match(TebotParserTEBOT_QUOTED_STRING)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -299,7 +307,7 @@ func (p *TebotParser) Tebot_value() (localctx ITebot_valueContext) {
 	p.EnterRule(localctx, 2, TebotParserRULE_tebot_value)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(14)
+		p.SetState(16)
 		p.Match(TebotParserTEBOT_QUOTED_STRING)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -388,7 +396,7 @@ func (p *TebotParser) Tebot_action() (localctx ITebot_actionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(16)
+		p.SetState(18)
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&4094) != 0) {
@@ -537,19 +545,19 @@ func (p *TebotParser) Tebot_assign() (localctx ITebot_assignContext) {
 	localctx = NewTebot_assignContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 6, TebotParserRULE_tebot_assign)
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(21)
+	p.SetState(23)
 	p.GetErrorHandler().Sync(p)
 
 	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 0, p.GetParserRuleContext()) == 1 {
 		{
-			p.SetState(18)
+			p.SetState(20)
 
 			var _x = p.Tebot_selector()
 
 			localctx.(*Tebot_assignContext).selector = _x
 		}
 		{
-			p.SetState(19)
+			p.SetState(21)
 			p.Match(TebotParserT__11)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -561,7 +569,7 @@ func (p *TebotParser) Tebot_assign() (localctx ITebot_assignContext) {
 		goto errorExit
 	}
 	{
-		p.SetState(23)
+		p.SetState(25)
 
 		var _x = p.Tebot_value()
 
@@ -592,6 +600,7 @@ type ITebot_operationContext interface {
 	Tebot_action() ITebot_actionContext
 	Tebot_selector() ITebot_selectorContext
 	Tebot_assign() ITebot_assignContext
+	Tebot_assert() ITebot_assertContext
 
 	// IsTebot_operationContext differentiates from other interfaces.
 	IsTebot_operationContext()
@@ -677,6 +686,22 @@ func (s *Tebot_operationContext) Tebot_assign() ITebot_assignContext {
 	return t.(ITebot_assignContext)
 }
 
+func (s *Tebot_operationContext) Tebot_assert() ITebot_assertContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(ITebot_assertContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ITebot_assertContext)
+}
+
 func (s *Tebot_operationContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -700,43 +725,282 @@ func (s *Tebot_operationContext) ExitRule(listener antlr.ParseTreeListener) {
 func (p *TebotParser) Tebot_operation() (localctx ITebot_operationContext) {
 	localctx = NewTebot_operationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 8, TebotParserRULE_tebot_operation)
+	p.SetState(36)
+	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 2, p.GetParserRuleContext()) {
+	case 1:
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(27)
+			p.Tebot_action()
+		}
+		{
+			p.SetState(28)
+			p.Match(TebotParserT__12)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		p.SetState(31)
+		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
+
+		switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 1, p.GetParserRuleContext()) {
+		case 1:
+			{
+				p.SetState(29)
+				p.Tebot_selector()
+			}
+
+		case 2:
+			{
+				p.SetState(30)
+				p.Tebot_assign()
+			}
+
+		case antlr.ATNInvalidAltNumber:
+			goto errorExit
+		}
+		{
+			p.SetState(33)
+			p.Match(TebotParserT__13)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+
+	case 2:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(35)
+			p.Tebot_assert()
+		}
+
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// ITebot_assertContext is an interface to support dynamic dispatch.
+type ITebot_assertContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// GetDsn returns the dsn rule contexts.
+	GetDsn() ITebot_valueContext
+
+	// GetSql returns the sql rule contexts.
+	GetSql() ITebot_valueContext
+
+	// GetExpected returns the expected rule contexts.
+	GetExpected() ITebot_valueContext
+
+	// SetDsn sets the dsn rule contexts.
+	SetDsn(ITebot_valueContext)
+
+	// SetSql sets the sql rule contexts.
+	SetSql(ITebot_valueContext)
+
+	// SetExpected sets the expected rule contexts.
+	SetExpected(ITebot_valueContext)
+
+	// Getter signatures
+	AllTebot_value() []ITebot_valueContext
+	Tebot_value(i int) ITebot_valueContext
+
+	// IsTebot_assertContext differentiates from other interfaces.
+	IsTebot_assertContext()
+}
+
+type Tebot_assertContext struct {
+	antlr.BaseParserRuleContext
+	parser   antlr.Parser
+	dsn      ITebot_valueContext
+	sql      ITebot_valueContext
+	expected ITebot_valueContext
+}
+
+func NewEmptyTebot_assertContext() *Tebot_assertContext {
+	var p = new(Tebot_assertContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = TebotParserRULE_tebot_assert
+	return p
+}
+
+func InitEmptyTebot_assertContext(p *Tebot_assertContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = TebotParserRULE_tebot_assert
+}
+
+func (*Tebot_assertContext) IsTebot_assertContext() {}
+
+func NewTebot_assertContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Tebot_assertContext {
+	var p = new(Tebot_assertContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = TebotParserRULE_tebot_assert
+
+	return p
+}
+
+func (s *Tebot_assertContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *Tebot_assertContext) GetDsn() ITebot_valueContext { return s.dsn }
+
+func (s *Tebot_assertContext) GetSql() ITebot_valueContext { return s.sql }
+
+func (s *Tebot_assertContext) GetExpected() ITebot_valueContext { return s.expected }
+
+func (s *Tebot_assertContext) SetDsn(v ITebot_valueContext) { s.dsn = v }
+
+func (s *Tebot_assertContext) SetSql(v ITebot_valueContext) { s.sql = v }
+
+func (s *Tebot_assertContext) SetExpected(v ITebot_valueContext) { s.expected = v }
+
+func (s *Tebot_assertContext) AllTebot_value() []ITebot_valueContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(ITebot_valueContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]ITebot_valueContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(ITebot_valueContext); ok {
+			tst[i] = t.(ITebot_valueContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *Tebot_assertContext) Tebot_value(i int) ITebot_valueContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(ITebot_valueContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ITebot_valueContext)
+}
+
+func (s *Tebot_assertContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Tebot_assertContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *Tebot_assertContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TebotListener); ok {
+		listenerT.EnterTebot_assert(s)
+	}
+}
+
+func (s *Tebot_assertContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(TebotListener); ok {
+		listenerT.ExitTebot_assert(s)
+	}
+}
+
+func (p *TebotParser) Tebot_assert() (localctx ITebot_assertContext) {
+	localctx = NewTebot_assertContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 10, TebotParserRULE_tebot_assert)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(25)
-		p.Tebot_action()
+		p.SetState(38)
+		p.Match(TebotParserT__4)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
-		p.SetState(26)
+		p.SetState(39)
 		p.Match(TebotParserT__12)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
-	p.SetState(29)
-	p.GetErrorHandler().Sync(p)
-	if p.HasError() {
-		goto errorExit
-	}
+	{
+		p.SetState(40)
 
-	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 1, p.GetParserRuleContext()) {
-	case 1:
-		{
-			p.SetState(27)
-			p.Tebot_selector()
-		}
+		var _x = p.Tebot_value()
 
-	case 2:
-		{
-			p.SetState(28)
-			p.Tebot_assign()
-		}
-
-	case antlr.ATNInvalidAltNumber:
-		goto errorExit
+		localctx.(*Tebot_assertContext).dsn = _x
 	}
 	{
-		p.SetState(31)
+		p.SetState(41)
+		p.Match(TebotParserT__14)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(42)
+
+		var _x = p.Tebot_value()
+
+		localctx.(*Tebot_assertContext).sql = _x
+	}
+	{
+		p.SetState(43)
+		p.Match(TebotParserT__14)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(44)
+
+		var _x = p.Tebot_value()
+
+		localctx.(*Tebot_assertContext).expected = _x
+	}
+	{
+		p.SetState(45)
 		p.Match(TebotParserT__13)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -867,11 +1131,11 @@ func (s *Tebot_operationsContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *TebotParser) Tebot_operations() (localctx ITebot_operationsContext) {
 	localctx = NewTebot_operationsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 10, TebotParserRULE_tebot_operations)
+	p.EnterRule(localctx, 12, TebotParserRULE_tebot_operations)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(36)
+	p.SetState(50)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -880,11 +1144,11 @@ func (p *TebotParser) Tebot_operations() (localctx ITebot_operationsContext) {
 
 	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&4094) != 0 {
 		{
-			p.SetState(33)
+			p.SetState(47)
 			p.Tebot_operation()
 		}
 
-		p.SetState(38)
+		p.SetState(52)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit

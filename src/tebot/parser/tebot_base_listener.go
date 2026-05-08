@@ -51,6 +51,12 @@ func (s *BaseTebotListener) EnterTebot_operation(ctx *Tebot_operationContext) {}
 // ExitTebot_operation is called when production tebot_operation is exited.
 func (s *BaseTebotListener) ExitTebot_operation(ctx *Tebot_operationContext) {}
 
+// EnterTebot_assert is called when production tebot_assert is entered.
+func (s *BaseTebotListener) EnterTebot_assert(ctx *Tebot_assertContext) {}
+
+// ExitTebot_assert is called when production tebot_assert is exited.
+func (s *BaseTebotListener) ExitTebot_assert(ctx *Tebot_assertContext) {}
+
 // EnterTebot_operations is called when production tebot_operations is entered.
 func (s *BaseTebotListener) EnterTebot_operations(ctx *Tebot_operationsContext) {}
 

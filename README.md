@@ -3,8 +3,7 @@
 ```bash
 cd gram
 
-~/export/opt/jdk-21.0.1/Contents/Home/bin/java -jar ~/export/opt/antlr4/antlr-4.13.0-complete.jar Tebot.g4 -Dlanguage=Go -o ../src/tebot/parser
-
+java -jar ~/export/opt/antlr4/antlr-4.13.0-complete.jar Tebot.g4 -Dlanguage=Go -o ../src/tebot/parser
 cd ..
 ```
 
@@ -30,7 +29,11 @@ go get github.com/tebeka/selenium
 go get github.com/go-vgo/robotgo
 ```
 
-## Run Tests
+## Run Test
+
+
+
+## Run Script
 
 ```
 ./tebot -selenium=../../vendor/selenium-server-standalone-3.141.59.jar -scripts=/Users/christian/export/local/projs/goodmanager/dev/e2e/gm.tebot

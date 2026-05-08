@@ -25,6 +25,7 @@ tebot_action
   |   'scroll'
   |   'save'
   |   'paste'
+  |   'assert'
   ;
 
 tebot_assign
@@ -33,7 +34,12 @@ tebot_assign
 
 tebot_operation
   :   tebot_action '(' (tebot_selector | tebot_assign) ')'
+  |   tebot_assert
   ;
+
+tebot_assert
+  :   'assert' '(' dsn=tebot_value ',' sql=tebot_value ',' expected=tebot_value ')'
+  ;  
 
 tebot_operations
   :   tebot_operation*

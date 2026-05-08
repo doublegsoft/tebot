@@ -23,6 +23,9 @@ type TebotListener interface {
 	// EnterTebot_operation is called when entering the tebot_operation production.
 	EnterTebot_operation(c *Tebot_operationContext)
 
+	// EnterTebot_assert is called when entering the tebot_assert production.
+	EnterTebot_assert(c *Tebot_assertContext)
+
 	// EnterTebot_operations is called when entering the tebot_operations production.
 	EnterTebot_operations(c *Tebot_operationsContext)
 
@@ -40,6 +43,9 @@ type TebotListener interface {
 
 	// ExitTebot_operation is called when exiting the tebot_operation production.
 	ExitTebot_operation(c *Tebot_operationContext)
+
+	// ExitTebot_assert is called when exiting the tebot_assert production.
+	ExitTebot_assert(c *Tebot_assertContext)
 
 	// ExitTebot_operations is called when exiting the tebot_operations production.
 	ExitTebot_operations(c *Tebot_operationsContext)
