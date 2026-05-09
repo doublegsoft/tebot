@@ -13,13 +13,14 @@ import (
   "golang.design/x/clipboard"
 
   "tebot/model"
+  "tebot/database"
 )
 
 func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
   const (
     port = 4444
   )
-  // /Users/christian/export/local/projs/tebot/vendor/macosx/geckodriver
+
   opts := []selenium.ServiceOption{
     // selenium.StartFrameBuffer(),                     // Start an X frame buffer for the browser to run in.
     selenium.GeckoDriver("./geckodriver"),        // Specify the path to GeckoDriver in order to use Firefox.
@@ -41,11 +42,20 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
   }
   defer service.Stop()
 
-  // Connect to the WebDriver instance running locally.
+  firefoxOpts := map[string]interface{}{
+    "args": []string{
+        "-profile",
+        "./firefox-profile",
+    },
+  }
+
   caps := selenium.Capabilities {
     "browserName":          "firefox",
     "takeScreenshot":       false,
-    "useTechnologyPreview": true}
+    "useTechnologyPreview": true,
+    "moz:firefoxOptions":   firefoxOpts,
+  }
+
   webdriver, err := selenium.NewRemote(caps, fmt.Sprintf("http://localhost:%d/wd/hub", port))
   if err != nil {
     panic(err)
@@ -160,6 +170,7 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
       //   fn := now.Format("20060102150405")
       //   ioutil.WriteFile("./"+ fn + ".assert.png", bytes, 0644)
       // }
+      database.QueryPostgres(op.Assert.GetDsn(), op.Assert.GetSql(), op.Assert.GetExpected())
       break
     case "sleep":
       sec, _ := strconv.ParseInt(op.GetSelector(), 10, 32)

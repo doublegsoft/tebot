@@ -32,9 +32,12 @@ go get github.com/go-vgo/robotgo
 ## Run Test
 
 
-
 ## Run Script
 
 ```
 ./tebot -selenium=../../vendor/selenium-server-standalone-3.141.59.jar -scripts=/Users/christian/export/local/projs/goodmanager/dev/e2e/gm.tebot
+
+java -jar selenium-server-4.43.0.jar standalone
+
+./tebot -scripts=your.tbt
 ```

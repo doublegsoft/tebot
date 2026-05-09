@@ -25,7 +25,6 @@ tebot_action
   |   'scroll'
   |   'save'
   |   'paste'
-  |   'assert'
   ;
 
 tebot_assign

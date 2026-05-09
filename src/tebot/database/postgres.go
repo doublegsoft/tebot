@@ -10,10 +10,9 @@ import (
 // QueryPostgres 执行查询：连接参数由 dsn 传入，SQL 与查询参数由 query/args 传入。
 // 返回每一行的列名 -> 值映射；value 中 []byte 会被转换成 string。
 func QueryPostgres(
-  ctx context.Context,
   dsn string,
   query string,
-  args ...any,
+  expected string,
 ) ([]map[string]any, error) {
   ctx := context.Background()
 	conn, err := pgx.Connect(ctx, dsn)
@@ -22,7 +21,7 @@ func QueryPostgres(
   }
   defer conn.Close(ctx)
 
-  rows, err := conn.Query(ctx, query, args...)
+  rows, err := conn.Query(ctx, query)
   if err != nil {
     return nil, fmt.Errorf("query postgres: %w", err)
   }
