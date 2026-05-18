@@ -137,17 +137,18 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
       ** @since 2.0
       */
       source := op.GetSelector()
-      target := op.GetValue()
+      // target := op.GetValue()
 
       strs := strings.Split(source, ",")
       x, _ := strconv.ParseInt(strings.Trim(strs[0], " "), 10, 32)
       y, _ := strconv.ParseInt(strings.Trim(strs[1], " "), 10, 32)
       robotgo.MoveMouseSmooth(int(x), int(y), 1.0, 1.5)
-      
-      strs = strings.Split(target, ",")
-      x, _ = strconv.ParseInt(strings.Trim(strs[0], " "), 10, 32)
-      y, _ = strconv.ParseInt(strings.Trim(strs[1], " "), 10, 32)
-      robotgo.DragSmooth(int(x), int(y), 1.0, 3.0)
+      time.Sleep(1 * time.Second)
+      robotgo.Click()
+      // strs = strings.Split(target, ",")
+      // x, _ = strconv.ParseInt(strings.Trim(strs[0], " "), 10, 32)
+      // y, _ = strconv.ParseInt(strings.Trim(strs[1], " "), 10, 32)
+      // robotgo.DragSmooth(int(x), int(y), 1.0, 3.0)
       break
     case "scroll":
       y, _ := strconv.ParseInt(op.GetSelector(), 10, 32)
