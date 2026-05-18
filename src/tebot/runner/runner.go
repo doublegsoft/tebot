@@ -102,7 +102,9 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
         option.Click()
         (*elm).Click()
       } else {
-        (*elm).Clear()
+        // (*elm).Clear()
+        (*elm).SendKeys(selenium.ControlKey + "a")
+        (*elm).SendKeys(selenium.DeleteKey)
         (*elm).SendKeys(op.GetValue())
       }
       break
