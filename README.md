@@ -41,3 +41,7 @@ java -jar selenium-server-4.43.0.jar standalone
 
 ./tebot -scripts=your.tbt
 ```
+
+## Linux Firefox
+
+[How to Install Firefox DEB on Ubuntu (Not Snap)](https://www.omgubuntu.co.uk/2022/04/how-to-install-firefox-deb-apt-ubuntu-22-04)
