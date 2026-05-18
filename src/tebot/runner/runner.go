@@ -9,6 +9,7 @@ import (
   "strings"
 
   "github.com/tebeka/selenium"
+  // "github.com/tebeka/selenium/firefox"
   "github.com/go-vgo/robotgo"
   "golang.design/x/clipboard"
 
@@ -55,6 +56,7 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
     "useTechnologyPreview": true,
     "moz:firefoxOptions":   firefoxOpts,
   }
+  
 
   webdriver, err := selenium.NewRemote(caps, fmt.Sprintf("http://localhost:%d/wd/hub", port))
   if err != nil {
