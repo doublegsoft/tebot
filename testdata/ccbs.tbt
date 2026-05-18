@@ -1,0 +1,4 @@
+goto("http://58.17.241.6:8000/abpms/billing/bill")
+capture("")
+
+sleep("5")
