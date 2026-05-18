@@ -116,7 +116,7 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
       now := time.Now()
       filename := now.Format("20060102150405")
       os.Mkdir("./screenshot", 0755)
-      ioutil.WriteFile("./screenshot/" + filename + ".png", bytes, 0755)
+      ioutil.WriteFile("./screenshot/" + op.GetSelector() + "." + filename + ".png", bytes, 0755)
       break
     case "save":
       /*!
