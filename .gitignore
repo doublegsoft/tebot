@@ -13,3 +13,4 @@
 .env.development.local
 .env.test.local
 .DS_Store
+src/tebot/tebot
