@@ -102,7 +102,6 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
         option.Click()
         (*elm).Click()
       } else {
-        // (*elm).Clear()
         (*elm).Click()
         time.Sleep(1 * time.Second)
         (*elm).SendKeys(selenium.ControlKey + "a")
@@ -179,6 +178,15 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
       //   ioutil.WriteFile("./"+ fn + ".assert.png", bytes, 0644)
       // }
       database.QueryPostgres(op.Assert.GetDsn(), op.Assert.GetSql(), op.Assert.GetExpected())
+      break
+    case "html":
+      elm := Locate(&webdriver, op)
+      result, _ := webdriver.ExecuteScript("return arguments[0].outerHTML;", []interface{}{*elm})
+    	html, _ := result.(string)
+      now := time.Now()
+      ts := now.Format("20060102150405")
+      os.Mkdir("./html", 0755)
+      ioutil.WriteFile("./html/" + op.GetValue() + "." + ts + ".html", []byte(html), 0755)
       break
     case "sleep":
       sec, _ := strconv.ParseInt(op.GetSelector(), 10, 32)

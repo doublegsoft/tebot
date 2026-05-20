@@ -33,13 +33,13 @@ var TebotParserStaticData struct {
 func tebotParserInit() {
 	staticData := &TebotParserStaticData
 	staticData.LiteralNames = []string{
-		"", "'click'", "'input'", "'select'", "'capture'", "'assert'", "'sleep'",
-		"'goto'", "'move'", "'scroll'", "'save'", "'paste'", "'='", "'('", "')'",
-		"','",
+		"", "'click'", "'input'", "'select'", "'capture'", "'sleep'", "'goto'",
+		"'move'", "'scroll'", "'save'", "'paste'", "'html'", "'assert'", "'='",
+		"'('", "')'", "','",
 	}
 	staticData.SymbolicNames = []string{
-		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "TEBOT_WHITESPACE",
-		"TEBOT_COMMENT", "TEBOT_QUOTED_STRING",
+		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+		"TEBOT_WHITESPACE", "TEBOT_COMMENT", "TEBOT_QUOTED_STRING",
 	}
 	staticData.RuleNames = []string{
 		"tebot_selector", "tebot_value", "tebot_action", "tebot_assign", "tebot_operation",
@@ -47,24 +47,24 @@ func tebotParserInit() {
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 18, 54, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 19, 54, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 1, 0, 1, 0, 1, 1, 1, 1, 1, 2, 1, 2, 1, 3, 1,
 		3, 1, 3, 3, 3, 24, 8, 3, 1, 3, 1, 3, 1, 4, 1, 4, 1, 4, 1, 4, 3, 4, 32,
 		8, 4, 1, 4, 1, 4, 1, 4, 3, 4, 37, 8, 4, 1, 5, 1, 5, 1, 5, 1, 5, 1, 5, 1,
 		5, 1, 5, 1, 5, 1, 5, 1, 6, 5, 6, 49, 8, 6, 10, 6, 12, 6, 52, 9, 6, 1, 6,
-		0, 0, 7, 0, 2, 4, 6, 8, 10, 12, 0, 1, 1, 0, 1, 11, 50, 0, 14, 1, 0, 0,
+		0, 0, 7, 0, 2, 4, 6, 8, 10, 12, 0, 1, 1, 0, 1, 12, 50, 0, 14, 1, 0, 0,
 		0, 2, 16, 1, 0, 0, 0, 4, 18, 1, 0, 0, 0, 6, 23, 1, 0, 0, 0, 8, 36, 1, 0,
-		0, 0, 10, 38, 1, 0, 0, 0, 12, 50, 1, 0, 0, 0, 14, 15, 5, 18, 0, 0, 15,
-		1, 1, 0, 0, 0, 16, 17, 5, 18, 0, 0, 17, 3, 1, 0, 0, 0, 18, 19, 7, 0, 0,
-		0, 19, 5, 1, 0, 0, 0, 20, 21, 3, 0, 0, 0, 21, 22, 5, 12, 0, 0, 22, 24,
+		0, 0, 10, 38, 1, 0, 0, 0, 12, 50, 1, 0, 0, 0, 14, 15, 5, 19, 0, 0, 15,
+		1, 1, 0, 0, 0, 16, 17, 5, 19, 0, 0, 17, 3, 1, 0, 0, 0, 18, 19, 7, 0, 0,
+		0, 19, 5, 1, 0, 0, 0, 20, 21, 3, 0, 0, 0, 21, 22, 5, 13, 0, 0, 22, 24,
 		1, 0, 0, 0, 23, 20, 1, 0, 0, 0, 23, 24, 1, 0, 0, 0, 24, 25, 1, 0, 0, 0,
-		25, 26, 3, 2, 1, 0, 26, 7, 1, 0, 0, 0, 27, 28, 3, 4, 2, 0, 28, 31, 5, 13,
+		25, 26, 3, 2, 1, 0, 26, 7, 1, 0, 0, 0, 27, 28, 3, 4, 2, 0, 28, 31, 5, 14,
 		0, 0, 29, 32, 3, 0, 0, 0, 30, 32, 3, 6, 3, 0, 31, 29, 1, 0, 0, 0, 31, 30,
-		1, 0, 0, 0, 32, 33, 1, 0, 0, 0, 33, 34, 5, 14, 0, 0, 34, 37, 1, 0, 0, 0,
+		1, 0, 0, 0, 32, 33, 1, 0, 0, 0, 33, 34, 5, 15, 0, 0, 34, 37, 1, 0, 0, 0,
 		35, 37, 3, 10, 5, 0, 36, 27, 1, 0, 0, 0, 36, 35, 1, 0, 0, 0, 37, 9, 1,
-		0, 0, 0, 38, 39, 5, 5, 0, 0, 39, 40, 5, 13, 0, 0, 40, 41, 3, 2, 1, 0, 41,
-		42, 5, 15, 0, 0, 42, 43, 3, 2, 1, 0, 43, 44, 5, 15, 0, 0, 44, 45, 3, 2,
-		1, 0, 45, 46, 5, 14, 0, 0, 46, 11, 1, 0, 0, 0, 47, 49, 3, 8, 4, 0, 48,
+		0, 0, 0, 38, 39, 5, 12, 0, 0, 39, 40, 5, 14, 0, 0, 40, 41, 3, 2, 1, 0,
+		41, 42, 5, 16, 0, 0, 42, 43, 3, 2, 1, 0, 43, 44, 5, 16, 0, 0, 44, 45, 3,
+		2, 1, 0, 45, 46, 5, 15, 0, 0, 46, 11, 1, 0, 0, 0, 47, 49, 3, 8, 4, 0, 48,
 		47, 1, 0, 0, 0, 49, 52, 1, 0, 0, 0, 50, 48, 1, 0, 0, 0, 50, 51, 1, 0, 0,
 		0, 51, 13, 1, 0, 0, 0, 52, 50, 1, 0, 0, 0, 4, 23, 31, 36, 50,
 	}
@@ -120,9 +120,10 @@ const (
 	TebotParserT__12               = 13
 	TebotParserT__13               = 14
 	TebotParserT__14               = 15
-	TebotParserTEBOT_WHITESPACE    = 16
-	TebotParserTEBOT_COMMENT       = 17
-	TebotParserTEBOT_QUOTED_STRING = 18
+	TebotParserT__15               = 16
+	TebotParserTEBOT_WHITESPACE    = 17
+	TebotParserTEBOT_COMMENT       = 18
+	TebotParserTEBOT_QUOTED_STRING = 19
 )
 
 // TebotParser rules.
@@ -399,7 +400,7 @@ func (p *TebotParser) Tebot_action() (localctx ITebot_actionContext) {
 		p.SetState(18)
 		_la = p.GetTokenStream().LA(1)
 
-		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&4094) != 0) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&8190) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -558,7 +559,7 @@ func (p *TebotParser) Tebot_assign() (localctx ITebot_assignContext) {
 		}
 		{
 			p.SetState(21)
-			p.Match(TebotParserT__11)
+			p.Match(TebotParserT__12)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -740,7 +741,7 @@ func (p *TebotParser) Tebot_operation() (localctx ITebot_operationContext) {
 		}
 		{
 			p.SetState(28)
-			p.Match(TebotParserT__12)
+			p.Match(TebotParserT__13)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -770,7 +771,7 @@ func (p *TebotParser) Tebot_operation() (localctx ITebot_operationContext) {
 		}
 		{
 			p.SetState(33)
-			p.Match(TebotParserT__13)
+			p.Match(TebotParserT__14)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
@@ -948,7 +949,7 @@ func (p *TebotParser) Tebot_assert() (localctx ITebot_assertContext) {
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(38)
-		p.Match(TebotParserT__4)
+		p.Match(TebotParserT__11)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -956,7 +957,7 @@ func (p *TebotParser) Tebot_assert() (localctx ITebot_assertContext) {
 	}
 	{
 		p.SetState(39)
-		p.Match(TebotParserT__12)
+		p.Match(TebotParserT__13)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -971,7 +972,7 @@ func (p *TebotParser) Tebot_assert() (localctx ITebot_assertContext) {
 	}
 	{
 		p.SetState(41)
-		p.Match(TebotParserT__14)
+		p.Match(TebotParserT__15)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -986,7 +987,7 @@ func (p *TebotParser) Tebot_assert() (localctx ITebot_assertContext) {
 	}
 	{
 		p.SetState(43)
-		p.Match(TebotParserT__14)
+		p.Match(TebotParserT__15)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -1001,7 +1002,7 @@ func (p *TebotParser) Tebot_assert() (localctx ITebot_assertContext) {
 	}
 	{
 		p.SetState(45)
-		p.Match(TebotParserT__13)
+		p.Match(TebotParserT__14)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -1142,7 +1143,7 @@ func (p *TebotParser) Tebot_operations() (localctx ITebot_operationsContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&4094) != 0 {
+	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&8190) != 0 {
 		{
 			p.SetState(47)
 			p.Tebot_operation()

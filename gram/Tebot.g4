@@ -18,13 +18,14 @@ tebot_action
   |   'input'
   |   'select'
   |   'capture'
-  |   'assert'
   |   'sleep'
   |   'goto'
   |   'move'
   |   'scroll'
   |   'save'
   |   'paste'
+  |   'html'
+  |   'assert'
   ;
 
 tebot_assign
