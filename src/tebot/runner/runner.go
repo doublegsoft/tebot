@@ -150,10 +150,11 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
       y, _ := strconv.ParseInt(strings.Trim(strs[1], " "), 10, 32)
       robotgo.MoveMouseSmooth(int(x), int(y), 1.0, 1.5)
       time.Sleep(1 * time.Second)
-      robotgo.Click("left", false)
       break
     case "scroll":
-      // y, _ := strconv.ParseInt(op.GetSelector(), 10, 32)
+      y, _ := strconv.ParseInt(op.GetSelector(), 10, 32)
+      robotgo.ScrollDir(int(y), "down")
+      time.Sleep(1 * time.Second)
       break
     case "assert":
       // elm := Locate(&webdriver, op)
