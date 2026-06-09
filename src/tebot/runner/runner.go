@@ -7,6 +7,7 @@ import (
   "time"
   "io/ioutil"
   "strings"
+  // "runtime"
 
   "github.com/tebeka/selenium"
   // "github.com/tebeka/selenium/firefox"
@@ -102,12 +103,24 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
         option.Click()
         (*elm).Click()
       } else {
-        (*elm).Click()
-        time.Sleep(1 * time.Second)
-        (*elm).SendKeys(selenium.ControlKey + "a")
-        (*elm).SendKeys(selenium.DeleteKey)
-        time.Sleep(1 * time.Second)
-        (*elm).SendKeys(op.GetValue())
+        // modifier := selenium.ControlKey
+      	// if runtime.GOOS == "darwin" {
+      	// 	modifier = selenium.ControlKey + selenium.ShiftKey // Uses Command (⌘) on macOS
+      	// }
+
+      	(*elm).Click()
+      	time.Sleep(1 * time.Second)
+
+        for i := 0; i < 100; i++ {
+          (*elm).SendKeys(selenium.BackspaceKey)
+          time.Sleep(10 * time.Millisecond)
+        }
+      	
+      	// (*elm).SendKeys(selenium.ControlKey + "a")
+      	// (*elm).SendKeys(selenium.DeleteKey)
+      	
+      	time.Sleep(1 * time.Second)
+      	(*elm).SendKeys(op.GetValue())
       }
       break
     case "capture":
