@@ -82,7 +82,6 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
       } else {
         webdriver.MaximizeWindow("")
       }
-
       break
     case "click":
       elm := Locate(&webdriver, op)
@@ -91,6 +90,16 @@ func Run(ops *model.TebotOperations, seleniumPath string, mobile bool) {
       }
       (*elm).Click()
       break
+    case "dblclick":
+      elm := Locate(&webdriver, op)
+      if elm == nil {
+        break
+      }
+      (*elm).MoveTo(0, 0)
+      time.Sleep(200 * time.Millisecond)
+      webdriver.DoubleClick()
+      
+      break  
     case "input":
       elm := Locate(&webdriver, op)
       if elm == nil {

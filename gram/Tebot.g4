@@ -15,6 +15,7 @@ tebot_value
 
 tebot_action
   :   'click'
+  |   'dblclick'
   |   'input'
   |   'select'
   |   'capture'
